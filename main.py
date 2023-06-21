@@ -45,7 +45,7 @@ def ansvers(message):
     if namet is True:  '''кейс имени'''
         name = str(message.text) '''запись данных'''
         bot.send_message(message.chat.id, "Принять?", reply_markup=yes('clas')) '''потверждение и переход'''
-        namet = False '''закрытие кейса''''
+        namet = False '''закрытие кейса'''
     elif clast is True:  '''кейс класса'''
         clas = str(message.text)
         bot.send_message(message.chat.id, "Принять?", reply_markup=yes('prog'))
@@ -72,7 +72,7 @@ def ansvers(message):
             bot.send_message(message.chat.id,"Принять?", reply_markup=yes('name'))
         except(Exception):
             bot.send_message(message.chat.id, "Это, что? ")
-def marki():  ''''''
+def marki():  '''клава'''
     markup = types.ReplyKeyboardMarkup()
     item1 = types.KeyboardButton("Да")
     item2 = types.KeyboardButton("Нет, но хочу научиться")
@@ -80,22 +80,22 @@ def marki():  ''''''
     markup.add(item1,item2,item3,row_width=3)
     return markup
 @bot.callback_query_handler(func=lambda call: True) 
-def qestion(call):  ''''''
+def qestion(call):  '''главная функция'''
     global age, name, clas, progran, three_d, reason, namet,clast,progt,three_dt,reasont,code,whyt,why
     if call.message:
-        if call.data == 'name':  ''''''
+        if call.data == 'name':  '''открытие имени'''
           namet = True
           bot.send_message(call.message.chat.id, 'Введите своё имя.')
-        if call.data == 'clas': ''''''
+        if call.data == 'clas': '''открытие класса'''
             clast = True
             bot.send_message(call.message.chat.id, 'Введите свой класс.',)
-        if call.data == 'prog': ''''''
+        if call.data == 'prog': '''окрытие прог.'''
             progt = True
             bot.send_message(call.message.chat.id,"Ты умеешь программировать?",reply_markup=marki())
-        if call.data == 'three_d': ''''''
+        if call.data == 'three_d': '''открытие 3d'''
             three_dt = True
             bot.send_message(call.message.chat.id,"Ты умеешь создавть 3D модели?",reply_markup=marki() )
-        if call.data == 'why': ''''''
+        if call.data == 'why': '''открытие Why, oh, why? и создание клавы'''
             mark = types.ReplyKeyboardMarkup()
             ite1 = types.KeyboardButton("Беспелотники.")
             ite2 = types.KeyboardButton("Умная гидропоника.")
@@ -108,7 +108,7 @@ def qestion(call):  ''''''
             bot.send_message(call.message.chat.id, "Что тебе нравится?", reply_markup=mark)
             whyt = True
 
-        if call.data == 'reason':  ''''''
+        if call.data == 'reason':  '''открытие причины'''
             reasont = True
             mark2 = types.ReplyKeyboardMarkup()
             ite1 = types.KeyboardButton("Мама заставила.")
@@ -119,12 +119,12 @@ def qestion(call):  ''''''
             mark2.add(ite1,ite2,ite3,ite4,ite5,row_width=2)
             bot.send_message(call.message.chat.id,"Зачем ты идёшь в лагерь?",reply_markup=mark2)
 
-        elif call.data == 'ends':  ''''''
-            if opros.test(age,progran,three_d,reason) == True:
+        elif call.data == 'ends':  '''обработка данных'''
+            if opros.test(age,progran,three_d,reason) == True: '''поздравление с регистрацией'''
                 a = types.ReplyKeyboardRemove()
                 bot.send_message(call.message.chat.id,f"{name} из {clas},ты прошёл тест!\nТвой код доступа:{code[0]}.\nТебе нравится {why}\nЭто сообщение надо отправить вожатому.\nСыллка на наш канал в телеграме -\nhttps://t.me/+pJlWOzZvaUU1ZWYy",reply_markup=a)
                 code = code[1:]
                 print(code)
-            else:  ''''''
+            else:  '''регистрация не пройдена'''
                 bot.send_message(call.message.chat.id,"Ты не прошёл тест.")
 bot.polling(none_stop=True)
