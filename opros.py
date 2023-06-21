@@ -1,4 +1,4 @@
-def can(this):
+def can(this): '''обработка ответа'''
     match(this):
         case("Да"):
              return 2
@@ -6,7 +6,7 @@ def can(this):
             return 1
         case("Нет, и не хочу учиться"):
             return 0
-def test(age,prog,three_d,reason):
+def test(age,prog,three_d,reason): '''результат опроса'''
     result = 0
     if age >= 11 and age <=15:
         result += 2
